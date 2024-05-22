@@ -1,0 +1,32 @@
+.zoni1 {
+    width: 50%;
+}
+
+.zoni2 {
+    width: 20%;
+}
+
+.zoni3 {
+    width: 40%;
+}
+
+.zoni4 {
+    width: 60%;
+}
+
+.zoni5 {
+    width: 80%;
+}
+
+.zoni6 {
+    width: 100%;
+}
+
+.zoni7 {
+    width:25rem;
+}
+
+.jkk {
+    display: grid;
+    place-items: center;
+}
