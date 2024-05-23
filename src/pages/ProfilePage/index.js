@@ -125,22 +125,12 @@ const Index = () => {
             </div>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="/404">
-              <i className="fas fa-fw fa-chart-area"></i>
-              <span>Charts</span>
-            </a>
-          </li>
-          <li className="nav-item">
-            <a className="nav-link" href="/tables">
+            <a className="nav-link" href="/equipements">
               <i className="fas fa-fw fa-table"></i>
               <span>Equipements</span>
             </a>
           </li>
           <div className="text-center d-none d-md-inline">
-            <button
-              className="rounded-circle border-0"
-              id="sidebarToggle"
-            ></button>
           </div>
           <div className="sidebar-card d-none d-lg-flex">
             <img
