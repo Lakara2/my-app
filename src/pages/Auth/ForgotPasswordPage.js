@@ -1,16 +1,16 @@
-import React, { useState } from 'react';
-import axios from 'axios';
-import { Form, Button, Alert, Container } from 'react-bootstrap';
+import React, { useState } from "react";
+import axios from "axios";
+import { Form, Button, Alert, Container } from "react-bootstrap";
 
 const ForgotPasswordPage = () => {
   const [formData, setFormData] = useState({
-    nom: '',
-    prenom: '',
-    grade: '',
-    unite: ''
+    nom: "",
+    prenom: "",
+    grade: "",
+    unite: "",
   });
-  const [successMessage, setSuccessMessage] = useState('');
-  const [errorMessage, setErrorMessage] = useState('');
+  const [successMessage, setSuccessMessage] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
   const handleChange = (e) => {
@@ -20,23 +20,29 @@ const ForgotPasswordPage = () => {
   const handleResetPassword = async (e) => {
     e.preventDefault();
     setIsLoading(true);
-    setSuccessMessage('');
-    setErrorMessage('');
+    setSuccessMessage("");
+    setErrorMessage("");
     try {
-      axios.post(`${process.env.REACT_APP_API_URL}/reset-password`, formData)
-      axios.post(`${process.env.REACT_APP_API_URL}/reset-password`, formData)
-      .then((r) => 
-        setSuccessMessage('Un e-mail de réinitialisation de mot de passe a été envoyé à votre adresse e-mail.'))
-      .catch((e) => console.log(e));
+      axios.post(`${process.env.REACT_APP_API_URL}/reset-password`, formData);
+      axios
+        .post(`${process.env.REACT_APP_API_URL}/reset-password`, formData)
+        .then((r) =>
+          setSuccessMessage(
+            "Un e-mail de réinitialisation de mot de passe a été envoyé à votre adresse e-mail.",
+          ),
+        )
+        .catch((e) => console.log(e));
     } catch (error) {
-      setErrorMessage('Une erreur est survenue lors de la réinitialisation du mot de passe. Veuillez réessayer.');
+      setErrorMessage(
+        "Une erreur est survenue lors de la réinitialisation du mot de passe. Veuillez réessayer.",
+      );
     } finally {
       setIsLoading(false);
     }
   };
 
   return (
-    <Container style={{ maxWidth: '400px', marginTop: '2rem' }}>
+    <Container style={{ maxWidth: "400px", marginTop: "2rem" }}>
       <h2 className="text-center">Réinitialisation du Mot de Passe</h2>
       {successMessage && <Alert variant="success">{successMessage}</Alert>}
       {errorMessage && <Alert variant="danger">{errorMessage}</Alert>}
@@ -65,12 +71,12 @@ const ForgotPasswordPage = () => {
         </Form.Group>
         <Form.Group controlId="grade">
           <Form.Label>Grade :</Form.Label>
-          <Form.Control 
-            as="select" 
-            name="grade" 
-            value={formData.grade} 
-            onChange={handleChange} 
-            required 
+          <Form.Control
+            as="select"
+            name="grade"
+            value={formData.grade}
+            onChange={handleChange}
+            required
           >
             <option value="">Sélectionnez un grade</option>
             <option value="Officier">Officier</option>
@@ -92,8 +98,13 @@ const ForgotPasswordPage = () => {
             max={10}
           />
         </Form.Group>
-        <Button variant="primary" type="submit" block={isLoading.toString()} disabled={isLoading}>
-          {isLoading ? 'Réinitialisation...' : 'Réinitialiser Mot de Passe'}
+        <Button
+          variant="primary"
+          type="submit"
+          block={isLoading.toString()}
+          disabled={isLoading}
+        >
+          {isLoading ? "Réinitialisation..." : "Réinitialiser Mot de Passe"}
         </Button>
       </Form>
     </Container>

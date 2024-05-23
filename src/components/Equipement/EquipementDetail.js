@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 const EquipementDetail = ({ equipement }) => {
   return (
@@ -16,7 +16,8 @@ const EquipementDetail = ({ equipement }) => {
             <strong>Pays d'origine:</strong> {equipement.pays_d_origine}
           </div>
           <div className="d-flex justify-content-between">
-            <strong>Année de fabrication:</strong> {equipement.annee_de_fabrication}
+            <strong>Année de fabrication:</strong>{" "}
+            {equipement.annee_de_fabrication}
           </div>
         </div>
       </div>

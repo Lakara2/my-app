@@ -8,11 +8,15 @@ const EquipementList = () => {
   useEffect(() => {
     const fetch = async () => {
       try {
-        axios.get(`${process.env.REACT_APP_API_URL}/equipements`)
-        .then((r) => setEquips(r.data))
-        .catch((e) => console.log(e));
+        axios
+          .get(`${process.env.REACT_APP_API_URL}/equipements`)
+          .then((r) => setEquips(r.data))
+          .catch((e) => console.log(e));
       } catch (error) {
-        console.error("Erreur lors de la récupération des équipements :", error);
+        console.error(
+          "Erreur lors de la récupération des équipements :",
+          error,
+        );
       }
     };
     fetch();
@@ -21,9 +25,16 @@ const EquipementList = () => {
   const handleDelete = async (equipementId) => {
     if (window.confirm("Êtes-vous sûr de vouloir supprimer cet équipement ?")) {
       try {
-        axios.delete(`${process.env.REACT_APP_API_URL}/equipements/${equipementId}`)
-        .then((r) => setEquips(equips.filter((equipement) => equipement._id !== equipementId)))
-        .catch((e) => console.log(e));
+        axios
+          .delete(
+            `${process.env.REACT_APP_API_URL}/equipements/${equipementId}`,
+          )
+          .then((r) =>
+            setEquips(
+              equips.filter((equipement) => equipement._id !== equipementId),
+            ),
+          )
+          .catch((e) => console.log(e));
       } catch (error) {
         console.error("Erreur lors de la suppression de l'équipement :", error);
       }

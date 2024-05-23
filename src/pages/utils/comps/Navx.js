@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import SearchBar from '../SearchBar';
-import { Navbar, Nav } from 'react-bootstrap';
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import SearchBar from "../SearchBar";
+import { Navbar, Nav } from "react-bootstrap";
 
 const Navx = () => {
   const [isNavOpen, setIsNavOpen] = useState(false);
@@ -10,11 +10,18 @@ const Navx = () => {
     setIsNavOpen(!isNavOpen);
   };
   return (
-    <Navbar bg="dark" expand="md" className="navbar-dark" style={{ padding: '20px' }}>
-      <Navbar.Brand>
-      </Navbar.Brand>
+    <Navbar
+      bg="dark"
+      expand="md"
+      className="navbar-dark"
+      style={{ padding: "20px" }}
+    >
+      <Navbar.Brand></Navbar.Brand>
       <Navbar.Toggle onClick={toggleNav} />
-      <Navbar.Collapse id="basic-navbar-nav" className={`collapse navbar-collapse ${isNavOpen ? 'show' : ''} justify-content-end`}>
+      <Navbar.Collapse
+        id="basic-navbar-nav"
+        className={`collapse navbar-collapse ${isNavOpen ? "show" : ""} justify-content-end`}
+      >
         <Nav className="ml-auto">
           <Link to="/" className="nav-link">
             Accueil
@@ -29,7 +36,7 @@ const Navx = () => {
         </Nav>
       </Navbar.Collapse>
     </Navbar>
-  )
+  );
 };
 
 export default Navx;

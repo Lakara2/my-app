@@ -1,5 +1,5 @@
-import React from 'react';
-import EquipementForm from './EquipementForm';
+import React from "react";
+import EquipementForm from "./EquipementForm";
 
 const EquipementFormPage = () => {
   return (

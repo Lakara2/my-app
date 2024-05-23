@@ -1,10 +1,10 @@
-import React, { createContext, useState } from 'react';
+import React, { createContext, useState } from "react";
 
 export const MyContext = createContext();
 
 export const MyContextProvider = ({ children }) => {
   const [data, setData] = useState(initialData);
-  const updateData = newData => {
+  const updateData = (newData) => {
     setData(newData);
   };
 
