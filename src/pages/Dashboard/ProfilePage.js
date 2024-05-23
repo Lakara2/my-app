@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { useParams } from 'react-router-dom';
 
 const ProfilePage = () => {
   const [userData, setUserData] = useState(null);
@@ -34,13 +32,13 @@ const ProfilePage = () => {
     setToken(token_l);
   }, []);
 
-  if (loading) {
-    return <div>Loading...</div>;
-  }
+  // if (loading) {
+  //   return <div>Loading...</div>;
+  // }
 
-  if (error) {
-    return <div>{error}</div>;
-  }
+  // if (error) {
+  //   return <div>{error}</div>;
+  // }
 
   return (
     <div className="container" style={{ maxWidth: '600px', marginTop: '2rem' }}>
