@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { Form, Button, Alert, Container } from "react-bootstrap";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import Logo from "../Dashboard/img/logo.png";
+import { Link } from "react-router-dom";
 
 const LoginForm = () => {
   const navigate = useNavigate();
@@ -42,6 +44,9 @@ const LoginForm = () => {
 
   return (
     <Container style={{ maxWidth: "400px", marginTop: "2rem" }}>
+      <Link className="mt-5 mb-5 justify-content-center" to="/">
+        <img src={Logo} alt="logo" className="rounded-circle" />
+      </Link>
       <h2 className="text-center">Se connecter</h2>
       {error && <Alert variant="danger">{error}</Alert>}
       {success && <Alert variant="success">{success}</Alert>}

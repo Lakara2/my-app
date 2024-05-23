@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
+import Logo from "../Dashboard/img/logo.png";
+import { Link } from "react-router-dom";
 
 const SignupPage = () => {
   const [formData, setFormData] = useState({
@@ -46,6 +48,9 @@ const SignupPage = () => {
 
   return (
     <div className="container" style={{ maxWidth: "600px", marginTop: "2rem" }}>
+       <Link className="mt-5 mb-5 justify-content-center" to="/">
+        <img src={Logo} alt="logo" className="rounded-circle" />
+      </Link>
       <h2>Inscription</h2>
       {error && <div className="alert alert-danger">{error}</div>}
       {successMessage && (

@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { Form, Button, Alert, Container } from "react-bootstrap";
-
+import Logo from "../Dashboard/img/logo.png";
+import { Link } from "react-router-dom";
 const ForgotPasswordPage = () => {
   const [formData, setFormData] = useState({
     nom: "",
@@ -28,13 +29,13 @@ const ForgotPasswordPage = () => {
         .post(`${process.env.REACT_APP_API_URL}/reset-password`, formData)
         .then((r) =>
           setSuccessMessage(
-            "Un e-mail de réinitialisation de mot de passe a été envoyé à votre adresse e-mail.",
-          ),
+            "Un e-mail de réinitialisation de mot de passe a été envoyé à votre adresse e-mail."
+          )
         )
         .catch((e) => console.log(e));
     } catch (error) {
       setErrorMessage(
-        "Une erreur est survenue lors de la réinitialisation du mot de passe. Veuillez réessayer.",
+        "Une erreur est survenue lors de la réinitialisation du mot de passe. Veuillez réessayer."
       );
     } finally {
       setIsLoading(false);
@@ -43,6 +44,9 @@ const ForgotPasswordPage = () => {
 
   return (
     <Container style={{ maxWidth: "400px", marginTop: "2rem" }}>
+      <Link className="mt-5 mb-5 justify-content-center" to="/">
+        <img src={Logo} alt="logo" className="rounded-circle" />
+      </Link>
       <h2 className="text-center">Réinitialisation du Mot de Passe</h2>
       {successMessage && <Alert variant="success">{successMessage}</Alert>}
       {errorMessage && <Alert variant="danger">{errorMessage}</Alert>}
