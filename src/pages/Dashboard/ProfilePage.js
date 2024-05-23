@@ -1,31 +1,37 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { useParams } from 'react-router-dom';
 
 const ProfilePage = () => {
-  const [userData, setUserData] = useState("");
+  const [userData, setUserData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
+  const [token, setToken] = useState(null);
 
+  // useEffect(() => {
+  //   const fetchUserData = async () => {
+  //     try {
+  //       console.log(user._id);
+  //       const response = await axios.get(`${process.env.REACT_APP_API_URL}/users/${user._id}`, {
+  //         headers: {
+  //           Authorization: `Bearer ${token}`
+  //         }
+  //       });
+  //       setUserData(response.data);
+  //     } catch (error) {
+  //       console.log(error);
+  //       setError('Une erreur s\'est produite lors de la récupération des données utilisateur.');
+  //     } finally {
+  //       setLoading(false);
+  //     }
+  //   );
   useEffect(() => {
-    const fetchUserData = async () => {
-      try {
-        const token = localStorage.getItem('token');
-        axios.get(`${process.env.REACT_APP_API_URL}/profile`, {
-          headers: {
-            Authorization: `Bearer ${token}`
-          }
-        })
-        .then((r) => setUserData(r.data))
-        .catch((e) => console.log(e));
-      } catch (error) {
-        setError('Une erreur s\'est produite lors de la récupération des données utilisateur.');
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchUserData();
+    const token_l = localStorage.getItem('token');
+    const user_l  = localStorage.getItem("user");
+    const user = JSON.parse(user_l);
+    setUserData(user);
+    setToken(token_l);
   }, []);
 
   if (loading) {

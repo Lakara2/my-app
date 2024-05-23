@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import defaultUserProfilePic from '../Dashboard/img/logo.png';
 import undraw from "./img/undraw_profile.png";
 import "./vendor/fontawesome-free/css/all.min.css";
@@ -9,23 +9,9 @@ import oni from './img/onigramme.png'
 import Footx from '../utils/comps/footx';
 import diag from './img/diagramme.png';
 import UserName from "../../components/User/UserName";
-import axios from "axios";
 
 const Index = () => {
-
-    const { id } = useParams();
-    const [user, setUser] = useState("invite(e)");
-
-    useEffect(() => {
-        const fetchUser = async () => {
-            axios.get(`${process.env.REACT_APP_API_URL}/users/${id}`)
-                .then((r) => setUser(r.data))
-                .catch((e) => console.log(e));
-            // setUser(response.data);
-        };
-        fetchUser();
-    }, [id]);
-
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
     return (
         <div id="page-top">
             <div id="wrapper">
@@ -148,112 +134,18 @@ const Index = () => {
                                         </form>
                                     </div>
                                 </li>
-                                <li className="nav-item dropdown no-arrow mx-1">
-                                    <div className="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                        aria-labelledby="alertsDropdown">
-                                        <h6 className="dropdown-header">
-                                            Alerts Center
-                                        </h6>
-                                        <a className="dropdown-item d-flex align-items-center" href="#">
-                                            <div className="mr-3">
-                                                <div className="icon-circle bg-primary">
-                                                    <i className="fas fa-file-alt text-white"></i>
-                                                </div>
-                                            </div>
-                                            <div>
-                                                <div className="small text-gray-500">December 12, 2019</div>
-                                                <span className="font-weight-bold">A new monthly report is ready to download!</span>
-                                            </div>
-                                        </a>
-                                        <a className="dropdown-item d-flex align-items-center" href="#">
-                                            <div className="mr-3">
-                                                <div className="icon-circle bg-success">
-                                                    <i className="fas fa-donate text-white"></i>
-                                                </div>
-                                            </div>
-                                            <div>
-                                                <div className="small text-gray-500">December 7, 2019</div>
-                                                $290.29 has been deposited into your account!
-                                            </div>
-                                        </a>
-                                        <a className="dropdown-item d-flex align-items-center" href="#">
-                                            <div className="mr-3">
-                                                <div className="icon-circle bg-warning">
-                                                    <i className="fas fa-exclamation-triangle text-white"></i>
-                                                </div>
-                                            </div>
-                                            <div>
-                                                <div className="small text-gray-500">December 2, 2019</div>
-                                                Spending Alert: We've noticed unusually high spending for your account.
-                                            </div>
-                                        </a>
-                                        <a className="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
-                                    </div>
-                                </li>
-                                <li className="nav-item dropdown no-arrow mx-1">
-                                    <div className="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                        aria-labelledby="messagesDropdown">
-                                        <h6 className="dropdown-header">
-                                            Message Center
-                                        </h6>
-                                        <a className="dropdown-item d-flex align-items-center" href="#">
-                                            <div className="dropdown-list-image mr-3">
-                                                <img className="rounded-circle" src="img/undraw_profile_1.svg"
-                                                    alt="..." />
-                                                <div className="status-indicator bg-success"></div>
-                                            </div>
-                                            <div className="font-weight-bold">
-                                                <div className="text-truncate">Hi there! I am wondering if you can help me with a
-                                                    problem I've been having.</div>
-                                                <div className="small text-gray-500">Emily Fowler · 58m</div>
-                                            </div>
-                                        </a>
-                                        <a className="dropdown-item d-flex align-items-center" href="#">
-                                            <div className="dropdown-list-image mr-3">
-                                                <img className="rounded-circle" src="img/undraw_profile_2.svg"
-                                                    alt="..." />
-                                                <div className="status-indicator"></div>
-                                            </div>
-                                            <div>
-                                                <div className="text-truncate">I have the photos that you ordered last month, how
-                                                    would you like them sent to you?</div>
-                                                <div className="small text-gray-500">Jae Chun · 1d</div>
-                                            </div>
-                                        </a>
-                                        <a className="dropdown-item d-flex align-items-center" href="#">
-                                            <div className="dropdown-list-image mr-3">
-                                                <img className="rounded-circle" src="img/undraw_profile_3.svg"
-                                                    alt="..." />
-                                                <div className="status-indicator bg-warning"></div>
-                                            </div>
-                                            <div>
-                                                <div className="text-truncate">Last month's report looks great, I am very happy with
-                                                    the progress so far, keep up the good work!</div>
-                                                <div className="small text-gray-500">Morgan Alvarez · 2d</div>
-                                            </div>
-                                        </a>
-                                        <a className="dropdown-item d-flex align-items-center" href="#">
-                                            <div className="dropdown-list-image mr-3">
-                                                <img className="rounded-circle" src="https://source.unsplash.com/Mv9hjnEUHR4/60x60"
-                                                    alt="..." />
-                                                <div className="status-indicator bg-success"></div>
-                                            </div>
-                                            <div>
-                                                <div className="text-truncate">Am I a good boy? The reason I ask is because someone
-                                                    told me that people say this to all dogs, even if they aren't good...</div>
-                                                <div className="small text-gray-500">Chicken the Dog · 2w</div>
-                                            </div>
-                                        </a>
-                                        <a className="dropdown-item text-center small text-gray-500" href="#">Read More Messages</a>
-                                    </div>
-                                </li>
 
                                 <div className="topbar-divider d-none d-sm-block"></div>
                                 <li className="nav-item dropdown no-arrow">
                                     <a className="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <span className="mr-2 d-none d-lg-inline  text-dark small">
-                                            {"invite(e)" && <UserName user={user} />}</span>
+                                        <span className="mr-2 d-none d-lg-inline text-dark small">
+                                          {isLoggedIn ? (
+                                            <UserName />
+                                          ) : (
+                                            "invite(e)"
+                                          )}
+                                        </span>
                                         <Link className='mt-5 mb-5 justify-content-center' to="/profile">
                                             <img className="img-profile rounded-circle"
                                                 src={undraw} />

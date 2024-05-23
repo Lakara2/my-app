@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Form, Button, Alert, Container } from 'react-bootstrap';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const LoginForm = () => {
+  const navigate = useNavigate();
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [formData, setFormData] = useState({
     nom: '',
@@ -17,19 +19,18 @@ const LoginForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setError('');
-    setSuccess('');
-    try {
-      const response = await axios.post(`${process.env.REACT_APP_API_URL}/users/login`, formData)
-        .then((r) => 
-          localStorage.setItem('token', response.data.token))
-        setSuccess('Connexion réussie!')
-        setIsAuthenticated(true)
-        .catch((e) => console.log(e));
-      window.location.href = '/'; 
-    } catch (error) {
-      setError('Erreur de connexion: ' + (error.response ? error.response.data.message : error.message));
-    }
+
+    axios.post(`${process.env.REACT_APP_API_URL}/users/login`, formData)
+      .then((r) => {
+        localStorage.setItem('token', r.data.token);
+        localStorage.setItem('user', JSON.stringify(r.data.user));
+        console.log(localStorage.getItem('user'));
+        setSuccess('Connexion réussie!');
+        setIsAuthenticated(true);
+      })
+      .catch((e) => console.log(e));
+
+    navigate("/");
   };
 
   useEffect(() => {
@@ -49,25 +50,25 @@ const LoginForm = () => {
       <Form onSubmit={handleSubmit}>
         <Form.Group controlId="nom">
           <Form.Label>Nom</Form.Label>
-          <Form.Control 
-            type="text" 
-            name="nom" 
-            value={formData.nom} 
-            onChange={handleChange} 
-            placeholder="Nom" 
-            required 
+          <Form.Control
+            type="text"
+            name="nom"
+            value={formData.nom}
+            onChange={handleChange}
+            placeholder="Nom"
+            required
           />
         </Form.Group>
 
         <Form.Group controlId="password">
           <Form.Label>Mot de passe</Form.Label>
-          <Form.Control 
-            type="password" 
-            name="password" 
-            value={formData.password} 
-            onChange={handleChange} 
-            placeholder="Mot de passe" 
-            required 
+          <Form.Control
+            type="password"
+            name="password"
+            value={formData.password}
+            onChange={handleChange}
+            placeholder="Mot de passe"
+            required
           />
         </Form.Group>
 
