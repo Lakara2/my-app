@@ -1,25 +1,25 @@
 .container {
-    display: flex;
+  display: flex;
+  flex-direction: column;
+}
+
+.d-flex {
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+}
+
+@media (max-width: 768px) {
+  .d-flex {
     flex-direction: column;
   }
-  
-  .d-flex {
-    display: flex;
-    flex-direction: row;
-    flex: 1;
-  }
-  
-  @media (max-width: 768px) {
-    .d-flex {
-      flex-direction: column;
-    }
-  }
+}
 
-  .foo {
-    display: grid;
-    grid-template-rows: auto 1fr auto;
-  }
-  .bro {
-    display: grid;
-    grid-template-columns: minmax(100px,200px)1fr;
-  }
+.foo {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
+.bro {
+  display: grid;
+  grid-template-columns: minmax(100px, 200px) 1fr;
+}

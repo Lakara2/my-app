@@ -1,10 +1,10 @@
-import React from 'react';
-import { Dropdown } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
-import { NavDropdown } from 'react-bootstrap';
+import React from "react";
+import { Dropdown } from "react-bootstrap";
+import { Link } from "react-router-dom";
+import { NavDropdown } from "react-bootstrap";
 
 function DropdownItem() {
-  const pic = '../../Dashboard/img/undraw_profile_2.png';
+  const pic = "../../Dashboard/img/undraw_profile_2.png";
   return (
     <Dropdown.Item href="#/action-1">
       <Link to="/profile" className="dropdown-item">
@@ -22,9 +22,9 @@ function DropdownItem() {
       </Link>
       <NavDropdown.Divider />
       <Link to="/logout" className="dropdown-item">
-        <button className='btn btn-light'>Logout</button>
+        <button className="btn btn-light">Logout</button>
       </Link>
-      </Dropdown.Item>
+    </Dropdown.Item>
   );
 }
 

@@ -1,22 +1,25 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import SearchBar from './SearchBar';
-import '../../App.css';
-import defaultUserProfilePic from '../../pages/Dashboard/img/logo.png';
-import 'react-bootstrap';
+import React from "react";
+import { Link } from "react-router-dom";
+import SearchBar from "./SearchBar";
+import "../../App.css";
+import defaultUserProfilePic from "../../pages/Dashboard/img/logo.png";
+import "react-bootstrap";
 
 const Navbar = ({ profilePic }) => {
-  const pic = profilePic ;
+  const pic = profilePic;
 
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <Link to="/" className="navbar-brand">
         <img
-        src={defaultUserProfilePic} alt='logo' className='rounded-circle imm profile-pic'/>
+          src={defaultUserProfilePic}
+          alt="logo"
+          className="rounded-circle imm profile-pic"
+        />
       </Link>
-          <div className="nav-item">
-            <SearchBar />
-          </div>
+      <div className="nav-item">
+        <SearchBar />
+      </div>
       <button
         className="navbar-toggler"
         type="button"
@@ -51,9 +54,9 @@ const Navbar = ({ profilePic }) => {
           </li>
           <li className="nav-item">
             <Link to="/logout" className="nav-link">
-              <button className='btn btn-dark'>Logout</button>
+              <button className="btn btn-dark">Logout</button>
             </Link>
-         </li>
+          </li>
         </ul>
       </div>
     </nav>

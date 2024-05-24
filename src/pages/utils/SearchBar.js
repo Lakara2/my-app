@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
-import { Form, FormControl } from 'react-bootstrap';
+import React, { useState } from "react";
+import { Form, FormControl } from "react-bootstrap";
 
 const SearchBar = ({ onSearch }) => {
-  const [searchInput, setSearchInput] = useState('');
+  const [searchInput, setSearchInput] = useState("");
 
   const handleChange = (e) => {
     e.preventDefault();

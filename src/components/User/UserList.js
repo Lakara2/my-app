@@ -7,7 +7,8 @@ const UserList = ({ onSelectUser }) => {
 
   useEffect(() => {
     const fetchUsers = async () => {
-      axios.get(`${process.env.REACT_APP_API_URL}/users`)
+      axios
+        .get(`${process.env.REACT_APP_API_URL}/users`)
         .then((r) => setUsers(r.data))
         .catch((e) => console.log(e));
     };
@@ -19,7 +20,8 @@ const UserList = ({ onSelectUser }) => {
       window.confirm("Êtes-vous sûr de vouloir supprimer cet utilisateur ?")
     ) {
       try {
-        axios.delete(`${process.env.REACT_APP_API_URL}/users/${userId}`)
+        axios
+          .delete(`${process.env.REACT_APP_API_URL}/users/${userId}`)
           .then((r) => setUsers(r.data))
           .catch((e) => console.log(e));
         setUsers(users.filter((user) => user._id !== userId));
@@ -27,11 +29,11 @@ const UserList = ({ onSelectUser }) => {
       } catch (error) {
         console.error(
           "Erreur lors de la suppression de l'utilisateur :",
-          error
+          error,
         );
         createToast(
           "error",
-          "Une erreur est survenue lors de la suppression de l'utilisateur."
+          "Une erreur est survenue lors de la suppression de l'utilisateur.",
         );
       }
     }

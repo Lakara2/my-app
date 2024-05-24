@@ -1,5 +1,5 @@
-import React from 'react';
-import EquipementList from './EquipementList';
+import React from "react";
+import EquipementList from "./EquipementList";
 
 const EquipementListPage = () => {
   return (

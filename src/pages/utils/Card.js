@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 const Card = ({ title, value, icon }) => {
   return (
@@ -10,7 +10,9 @@ const Card = ({ title, value, icon }) => {
               <div className="text-xs font-weight-bold text-primary text-uppercase mb-1">
                 {title}
               </div>
-              <div className="h5 mb-0 font-weight-bold text-gray-800">{value}</div>
+              <div className="h5 mb-0 font-weight-bold text-gray-800">
+                {value}
+              </div>
             </div>
             <div className="col-auto">
               <i className={`${icon} fa-2x text-gray-300`} />

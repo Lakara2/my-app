@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
-import axios from 'axios';
-import UserForm from './UserForm';
+import React, { useEffect, useState } from "react";
+import { useParams, useNavigate } from "react-router-dom";
+import axios from "axios";
+import UserForm from "./UserForm";
 
 const UserFormPage = () => {
   const { id } = useParams();
@@ -11,9 +11,10 @@ const UserFormPage = () => {
   useEffect(() => {
     if (id) {
       const fetchUser = async () => {
-        axios.get(`${process.env.REACT_APP_API_URL}/users/${id}`)
-        .then((r) => setUser(r.data))
-        .catch((e) => console.log(e));
+        axios
+          .get(`${process.env.REACT_APP_API_URL}/users/${id}`)
+          .then((r) => setUser(r.data))
+          .catch((e) => console.log(e));
       };
       fetchUser();
     }
@@ -21,15 +22,17 @@ const UserFormPage = () => {
 
   const handleSubmit = async (userData) => {
     if (id) {
-      axios.put(`${process.env.REACT_APP_API_URL}/users/${id}`, userData)
-      .then((r) => setUser(r.data))
-      .catch((e) => console.log(e));
+      axios
+        .put(`${process.env.REACT_APP_API_URL}/users/${id}`, userData)
+        .then((r) => setUser(r.data))
+        .catch((e) => console.log(e));
     } else {
-      axios.post(`${process.env.REACT_APP_API_URL}/users`, userData)
-      .then((r) => setUser(r.data))
-      .catch((e) => console.log(e));
+      axios
+        .post(`${process.env.REACT_APP_API_URL}/users`, userData)
+        .then((r) => setUser(r.data))
+        .catch((e) => console.log(e));
     }
-    navigate('/users');
+    navigate("/users");
   };
 
   return (
